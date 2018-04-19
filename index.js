@@ -7,12 +7,10 @@ const ConnectionString = require('azure-iot-device').ConnectionString;
 const Message = require('azure-iot-device').Message;
 const Protocol = require('azure-iot-device-mqtt').Mqtt;
 
-var sendingMessage = true;
 var messageId = 0;
 var client;
 
 function sendMessage(data) {
-	if (!sendingMessage) { return; }
  	messageId++;
 	var message = new Message(data);
 	client.sendEvent(message, (err) => {
